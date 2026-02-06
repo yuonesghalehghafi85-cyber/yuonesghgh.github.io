@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lilacmeson</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    .font-luxury {
+      font-family: 'Playfair Display', serif;
+    }
+    .font-persian {
+      font-family: 'Noto Nastaliq Urdu', serif;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes sparkleGlow {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    @keyframes shimmerGold {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-sparkle {
+      animation: sparkleGlow 2.5s ease-in-out infinite;
+    }
+
+    .animate-fade-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .animate-slide-in {
+      animation: slideIn 0.6s ease-out forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .delay-4 { animation-delay: 0.4s; opacity: 0; }
+    .delay-5 { animation-delay: 0.5s; opacity: 0; }
+    .delay-6 { animation-delay: 0.6s; opacity: 0; }
+
+    .gold-shimmer {
+      background: linear-gradient(120deg, #b8860b 0%, #ffd700 25%, #ffed4e 50%, #ffd700 75%, #b8860b 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmerGold 3s linear infinite;
+    }
+
+    .glass-card {
+      backdrop-filter: blur(20px);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(255, 215, 0, 0.3);
+    }
+
+    .product-card {
+      backdrop-filter: blur(15px);
+      transition: all 0.4s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
+    }
+
+    .luxury-button {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .luxury-button::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .luxury-button:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    .luxury-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
+    }
+
+    .luxury-bg {
+      background: linear-gradient(135deg, #1a0033 0%, #2d0052 25%, #4a0080 50%, #2d0052 75%, #1a0033 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hidden-section {
+      display: none;
+    }
+
+    .visible-section {
+      display: block;
+    }
+  </style>
+</head>
+<body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto luxury-bg">
+
+    <!-- Animated Background Elements -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+      <div class="absolute top-20 right-20 w-80 h-80 rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, #8b00ff 0%, transparent 70%);"></div>
+      <div class="absolute bottom-20 left-20 w-80 h-80 rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, #ff00ff 0%, transparent 70%);"></div>
+      <div class="absolute top-1/2 left-1/2 w-96 h-96 rounded-full opacity-15 blur-3xl" style="background: radial-gradient(circle, #ffd700 0%, transparent 70%);"></div>
+
+      <div class="absolute top-32 left-1/4 w-2 h-2 bg-yellow-300 rounded-full animate-sparkle"></div>
+      <div class="absolute top-48 right-1/3 w-3 h-3 bg-yellow-200 rounded-full animate-sparkle" style="animation-delay: 0.5s;"></div>
+      <div class="absolute bottom-40 left-1/3 w-2 h-2 bg-yellow-400 rounded-full animate-sparkle" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-56 right-1/4 w-3 h-3 bg-yellow-300 rounded-full animate-sparkle" style="animation-delay: 1.5s;"></div>
+    </div>
+
+    <!-- HOME PAGE -->
+    <div id="home-page" class="visible-section">
+      <!-- Header -->
+      <header class="relative z-20 py-16 text-center animate-fade-up">
+        <div class="inline-block relative">
+          <div class="absolute -top-6 -right-6 w-16 h-16 border-t-2 border-r-2 opacity-40" style="border-color: #ffd700;"></div>
+          <div class="absolute -bottom-6 -left-6 w-16 h-16 border-b-2 border-l-2 opacity-40" style="border-color: #ffd700;"></div>
+          <h1 id="brand-name" class="text-7xl md:text-8xl font-luxury font-black gold-shimmer tracking-[0.25em] px-10">
+           Lilac
+          <p>meson</p>
+          </h1>
+        </div>
+        <div class="mt-6 flex items-center justify-center gap-4">
+          <div class="w-20 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+          <svg class="w-6 h-6 text-yellow-400 animate-sparkle" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <div class="w-20 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="relative z-10 text-center px-6 py-16 animate-fade-up delay-2">
+        <h2 id="hero-title" class="text-4xl md:text-5xl font-luxury text-white mb-4 leading-tight">
+          Luxury <span class="gold-shimmer">Fashion</span> House
+        </h2>
+        <p id="hero-subtitle" class="text-xl md:text-2xl font-persian text-purple-200 max-w-2xl mx-auto leading-relaxed">
+          جایی که رویاهای شما به واقعیت تبدیل می‌شود
+        </p>
+      </section>
+
+      <!-- Categories Section -->
+      <section class="relative z-10 px-6 py-20 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+          <!-- Bridal Category -->
+          <div class="glass-card rounded-3xl p-16 animate-fade-up delay-3 cursor-pointer"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 3px solid rgba(255, 215, 0, 0.3);"
+               onclick="showCategory('bridal')" role="button" tabindex="0" onkeypress="if(event.key==='Enter') showCategory('bridal')">
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center w-48 h-48 rounded-full mb-8 animate-float"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 237, 78, 0.2) 100%); border: 3px solid rgba(255, 215, 0, 0.5); box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);">
+                <svg class="w-32 h-32 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 10 L40 30 L20 35 L25 50 L20 65 L40 70 L50 90 L60 70 L80 65 L75 50 L80 35 L60 30 Z"/>
+                  <ellipse cx="50" cy="45" rx="15" ry="25" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <path d="M35 45 Q50 35 65 45 L60 75 L40 75 Z" fill="rgba(255,255,255,0.3)"/>
+                  <circle cx="50" cy="20" r="6" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-4xl font-luxury text-yellow-300 tracking-widest mb-4">BRIDAL</h3>
+              <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mb-6"></div>
+              <p class="text-2xl font-persian text-purple-100 mb-3">لباس عروس</p>
+              <p class="text-lg font-persian text-purple-300 mb-6">۱۲ مدل اختصاصی</p>
+              <p class="text-base font-persian text-yellow-400">کلیک برای مشاهده →</p>
+            </div>
+          </div>
+
+          <!-- Evening Category -->
+          <div class="glass-card rounded-3xl p-16 animate-fade-up delay-4 cursor-pointer"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 3px solid rgba(255, 215, 0, 0.3);"
+               onclick="showCategory('evening')" role="button" tabindex="0" onkeypress="if(event.key==='Enter') showCategory('evening')">
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center w-48 h-48 rounded-full mb-8 animate-float"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 237, 78, 0.2) 100%); border: 3px solid rgba(255, 215, 0, 0.5); box-shadow: 0 0 40px rgba(255, 215, 0, 0.3); animation-delay: 0.3s;">
+                <svg class="w-32 h-32 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="35" rx="22" ry="32"/>
+                  <path d="M28 35 L18 88 L38 88 L38 72 L62 72 L62 88 L82 88 L72 35 Z"/>
+                  <circle cx="50" cy="20" r="10" fill="rgba(255,255,255,0.5)"/>
+                  <circle cx="40" cy="50" r="3" fill="rgba(255,215,0,1)"/>
+                  <circle cx="60" cy="50" r="3" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-4xl font-luxury text-yellow-300 tracking-widest mb-4">EVENING</h3>
+              <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mb-6"></div>
+              <p class="text-2xl font-persian text-purple-100 mb-3">لباس شب</p>
+              <p class="text-lg font-persian text-purple-300 mb-6">۱۵ مدل مجلسی</p>
+              <p class="text-base font-persian text-yellow-400">کلیک برای مشاهده →</p>
+            </div>
+          </div>
+
+          <!-- Formal Category -->
+          <div class="glass-card rounded-3xl p-16 animate-fade-up delay-5 cursor-pointer"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 3px solid rgba(255, 215, 0, 0.3);"
+               onclick="showCategory('formal')" role="button" tabindex="0" onkeypress="if(event.key==='Enter') showCategory('formal')">
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center w-48 h-48 rounded-full mb-8 animate-float"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 237, 78, 0.2) 100%); border: 3px solid rgba(255, 215, 0, 0.5); box-shadow: 0 0 40px rgba(255, 215, 0, 0.3); animation-delay: 0.6s;">
+                <svg class="w-32 h-32 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="28" y="22" width="44" height="66" rx="4"/>
+                  <path d="M28 22 L23 42 L23 88 L35 88 L35 58 L65 58 L65 88 L77 88 L77 42 L72 22 Z"/>
+                  <rect x="38" y="28" width="24" height="30" fill="rgba(255,255,255,0.3)"/>
+                  <circle cx="44" cy="42" r="3" fill="rgba(255,215,0,1)"/>
+                  <circle cx="56" cy="42" r="3" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-4xl font-luxury text-yellow-300 tracking-widest mb-4">FORMAL</h3>
+              <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mb-6"></div>
+              <p class="text-2xl font-persian text-purple-100 mb-3">کت و دامن</p>
+              <p class="text-lg font-persian text-purple-300 mb-6">۱۰ مدل رسمی</p>
+              <p class="text-base font-persian text-yellow-400">کلیک برای مشاهده →</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="relative z-10 px-6 py-20 max-w-6xl mx-auto">
+        <div class="text-center mb-12 animate-fade-up delay-6">
+          <h2 class="text-4xl font-luxury text-white mb-3">Contact <span class="gold-shimmer">Us</span></h2>
+          <div class="flex items-center justify-center gap-3">
+            <div class="w-16 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+            <span class="text-xl font-persian text-purple-200">ارتباط با ما
+</span>
+            <div class="w-16 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <!-- Phone -->
+          <div class="glass-card rounded-2xl p-10 animate-fade-up delay-6"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.25) 0%, rgba(75, 0, 130, 0.25) 100%); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center w-24 h-24 rounded-full mb-6"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 237, 78, 0.25) 100%); border: 2px solid rgba(255, 215, 0, 0.5); box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);">
+                <svg class="w-12 h-12 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 tracking-widest mb-4">PHONE</h3>
+              <p id="contact-phone" class="text-3xl font-luxury text-white mb-3 tracking-wide" dir="ltr">0 9 8 – 9 1 2 0 7 6 7 7 8 3</p>
+              <p class="text-base font-persian text-purple-200 mb-6">شنبه تا پنجشنبه | ۱۱ صبح - 10 شب</p>
+              <a href="tel:02188776655" class="luxury-button inline-block px-10 py-4 text-base font-luxury tracking-widest relative"
+                 style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #1a0033; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);">
+                CALL NOW
+              </a>
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="glass-card rounded-2xl p-10 animate-fade-up delay-6"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.25) 0%, rgba(186, 85, 211, 0.25) 100%); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center w-24 h-24 rounded-full mb-6"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 237, 78, 0.25) 100%); border: 2px solid rgba(255, 215, 0, 0.5); box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);">
+                <svg class="w-12 h-12 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 tracking-widest mb-4">ADDRESS</h3>
+              <p id="contact-address" class="text-lg font-persian text-white mb-2 leading-relaxed">خیابان طالقانی شرقی-طالقانی12 نبش فرعی اول-پلاک10</p>
+              <p id="contact-city" class="text-2xl font-persian text-purple-200 mb-6">گلستان -گنبدکاووس</p>
+              <p>37.2514930,55.1834313</p>
+              <a href="https://maps.google.com/?q=گلستان+گنبد کاووس" target="_blank" rel="noopener noreferrer"
+                 class="luxury-button inline-block px-10 py-4 text-base font-luxury tracking-widest relative"
+                 style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #1a0033; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);">
+                DIRECTIONS
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="relative z-10 py-8 text-center">
+        <div class="mb-3">
+          <span id="footer-brand" class="text-4xl font-luxury font-bold gold-shimmer tracking-[0.25em]">Lilacmeson</span>
+        </div>
+        <p class="text-purple-300 text-xs font-luxury tracking-widest">© 2024 ALL RIGHTS RESERVED</p>
+      </footer>
+    </div>
+
+    <!-- BRIDAL PAGE -->
+    <div id="bridal-page" class="hidden-section">
+      <div class="relative z-20 py-8 px-6">
+        <button onclick="showHome()" class="luxury-button px-8 py-3 text-sm font-luxury tracking-widest"
+                style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #1a0033;">
+          ← بازگشت به صفحه اصلی
+        </button>
+      </div>
+
+      <section class="relative z-10 px-6 py-12 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-luxury text-white mb-4">Bridal <span class="gold-shimmer">Collection</span></h2>
+          <p class="text-2xl font-persian text-purple-200">مجموعه لباس عروس</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <!-- Product 1 -->
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-1"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 10 L40 30 L20 35 L25 50 L20 65 L40 70 L50 90 L60 70 L80 65 L75 50 L80 35 L60 30 Z"/>
+                  <ellipse cx="50" cy="45" rx="15" ry="25" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Princess</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل پرنسسی کلاسیک</p>
+              <p class="text-lg font-luxury text-white">۴۵,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-2"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 10 L45 25 L30 30 L35 45 L30 60 L45 65 L50 80 L55 65 L70 60 L65 45 L70 30 L55 25 Z"/>
+                  <circle cx="50" cy="45" r="18" fill="rgba(255,255,255,0.2)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Mermaid</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل ماهی دنباله‌دار</p>
+              <p class="text-lg font-luxury text-white">۵۲,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-3"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="40" rx="20" ry="30"/>
+                  <path d="M30 40 L20 85 L80 85 L70 40 Z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">A-Line</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل ای لاین مدرن</p>
+              <p class="text-lg font-luxury text-white">۳۸,۰۰۰,۰۰۰ توم��ن</p>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-4"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 15 L42 32 L25 35 L30 48 L25 61 L42 64 L50 81 L58 64 L75 61 L70 48 L75 35 L58 32 Z"/>
+                  <circle cx="50" cy="25" r="7" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Ball Gown</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل حجیم سل��نتی</p>
+              <p class="text-lg font-luxury text-white">۵۸,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <!-- Products 5-12 (Similar structure) -->
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-5"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="35" y="20" width="30" height="65" rx="3"/>
+                  <circle cx="50" cy="15" r="5" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Sheath</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل ستونی ساده</p>
+              <p class="text-lg font-luxury text-white">۳۲,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-6"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="35" rx="18" ry="25"/>
+                  <path d="M32 35 L25 82 L75 82 L68 35 Z"/>
+                  <circle cx="45" cy="40" r="2" fill="rgba(255,215,0,1)"/>
+                  <circle cx="55" cy="40" r="2" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Empire</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل امپراطوری</p>
+              <p class="text-lg font-luxury text-white">۴��,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-1"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 12 L43 28 L27 32 L32 45 L27 58 L43 62 L50 78 L57 62 L73 58 L68 45 L73 32 L57 28 Z"/>
+                  <path d="M40 45 Q50 38 60 45 L58 70 L42 70 Z" fill="rgba(255,255,255,0.25)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Vintage Lace</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل توری کلاسیک</p>
+              <p class="text-lg font-luxury text-white">۴۸,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-2"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="38" rx="22" ry="28"/>
+                  <path d="M28 38 L18 86 L38 86 L38 70 L62 70 L62 86 L82 86 L72 38 Z"/>
+                  <circle cx="50" cy="22" r="8" fill="rgba(255,255,255,0.4)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Trumpet</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل شیپوری جدید</p>
+              <p class="text-lg font-luxury text-white">۵۰,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-3"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 10 L38 32 L18 36 L24 52 L18 68 L38 72 L50 94 L62 72 L82 68 L76 52 L82 36 L62 32 Z"/>
+                  <circle cx="50" cy="52" r="15" fill="rgba(255,255,255,0.2)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Tea Length</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل کوتاه شیک</p>
+              <p class="text-lg font-luxury text-white">۳۵,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-4"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="32" y="22" width="36" height="60" rx="5"/>
+                  <path d="M32 22 L28 40 L28 82 L38 82 L38 60 L62 60 L62 82 L72 82 L72 40 L68 22 Z"/>
+                  <circle cx="44" cy="38" r="3" fill="rgba(255,215,0,1)"/>
+                  <circle cx="56" cy="38" r="3" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Two Piece</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل دو ��که مدرن</p>
+              <p class="text-lg font-luxury text-white">۳۶,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-5"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 8 L40 26 L22 30 L28 44 L22 58 L40 62 L50 80 L60 62 L78 58 L72 44 L78 30 L60 26 Z"/>
+                  <ellipse cx="50" cy="42" rx="16" ry="24" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="50" cy="18" r="6" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Off Shoulder</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل شانه باز</p>
+              <p class="text-lg font-luxury text-white">۴۴,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-6"
+               style="background: linear-gradient(135deg, rgba(139, 0, 255, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 10 L42 28 L24 32 L30 46 L24 60 L42 64 L50 82 L58 64 L76 60 L70 46 L76 32 L58 28 Z"/>
+                  <path d="M38 46 Q50 40 62 46 L60 72 L40 72 Z" fill="rgba(255,255,255,0.3)"/>
+                  <circle cx="50" cy="20" r="5" fill="rgba(255,215,0,1)"/>
+                  <circle cx="46" cy="50" r="2" fill="rgba(255,215,0,1)"/>
+                  <circle cx="54" cy="50" r="2" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Bohemian</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مدل بوهو رمانتیک</p>
+              <p class="text-lg font-luxury text-white">۴۰,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- EVENING PAGE -->
+    <div id="evening-page" class="hidden-section">
+      <div class="relative z-20 py-8 px-6">
+        <button onclick="showHome()" class="luxury-button px-8 py-3 text-sm font-luxury tracking-widest"
+                style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #1a0033;">
+          ← بازگشت به صفحه اصلی
+        </button>
+      </div>
+
+      <section class="relative z-10 px-6 py-12 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-luxury text-white mb-4">Evening <span class="gold-shimmer">Collection</span></h2>
+          <p class="text-2xl font-persian text-purple-200">مجموعه لباس شب</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <!-- 15 Evening dress products with similar structure -->
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-1"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="35" rx="22" ry="32"/>
+                  <path d="M28 35 L18 88 L38 88 L38 72 L62 72 L62 88 L82 88 L72 35 Z"/>
+                  <circle cx="40" cy="50" r="3" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Sequin Gown</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">لباس پولکی درخشان</p>
+              <p class="text-lg font-luxury text-white">۲۸,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-2"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="35" y="25" width="30" height="60" rx="4"/>
+                  <circle cx="50" cy="20" r="7" fill="rgba(255,255,255,0.4)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Velvet Dress</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">لباس مخمل شیک</p>
+              <p class="text-lg font-luxury text-white">۲۴,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-3"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="38" rx="20" ry="28"/>
+                  <path d="M30 38 L22 85 L78 85 L70 38 Z"/>
+                  <circle cx="45" cy="45" r="2" fill="rgba(255,215,0,1)"/>
+                  <circle cx="55" cy="45" r="2" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Satin Elegance</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">ساتن لوکس</p>
+              <p class="text-lg font-luxury text-white">۲۶,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-4"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="32" rx="24" ry="30"/>
+                  <path d="M26 32 L16 86 L36 86 L36 70 L64 70 L64 86 L84 86 L74 32 Z"/>
+                  <circle cx="50" cy="18" r="9" fill="rgba(255,255,255,0.5)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Chiffon Flow</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">شیفون روان</p>
+              <p class="text-lg font-luxury text-white">۲۲,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-5"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 15 L45 30 L30 34 L35 47 L30 60 L45 64 L50 79 L55 64 L70 60 L65 47 L70 34 L55 30 Z"/>
+                  <circle cx="50" cy="47" r="12" fill="rgba(255,255,255,0.25)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Cocktail Sparkle</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">کوکتیل درخشان</p>
+              <p class="text-lg font-luxury text-white">۲۰,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-6"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="33" y="24" width="34" height="62" rx="4"/>
+                  <circle cx="44" cy="40" r="3" fill="rgba(255,215,0,1)"/>
+                  <circle cx="56" cy="40" r="3" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Column Dress</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">ستونی مدرن</p>
+              <p class="text-lg font-luxury text-white">۲۵,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-1"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="36" rx="19" ry="26"/>
+                  <path d="M31 36 L24 83 L76 83 L69 36 Z"/>
+                  <circle cx="50" cy="22" r="8" fill="rgba(255,255,255,0.45)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">High Neck</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">یقه بلند شیک</p>
+              <p class="text-lg font-luxury text-white">۲۷,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-2"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 18 L42 33 L27 37 L32 50 L27 63 L42 67 L50 82 L58 67 L73 63 L68 50 L73 37 L58 33 Z"/>
+                  <ellipse cx="50" cy="48" rx="14" ry="22" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Asymmetric</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">نامتقارن جذاب</p>
+              <p class="text-lg font-luxury text-white">۲۳,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-3"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="34" rx="23" ry="31"/>
+                  <path d="M27 34 L17 87 L37 87 L37 71 L63 71 L63 87 L83 87 L73 34 Z"/>
+                  <circle cx="42" cy="48" r="3" fill="rgba(255,215,0,1)"/>
+                  <circle cx="58" cy="48" r="3" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Beaded Beauty</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">مرواریدی زیبا</p>
+              <p class="text-lg font-luxury text-white">۳۰,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-4"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="36" y="26" width="28" height="58" rx="3"/>
+                  <path d="M36 26 L32 44 L32 84 L42 84 L42 62 L58 62 L58 84 L68 84 L68 44 L64 26 Z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Halter Top</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">یقه هالتر</p>
+              <p class="text-lg font-luxury text-white">۲۱,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-5"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="37" rx="21" ry="29"/>
+                  <path d="M29 37 L20 84 L80 84 L71 37 Z"/>
+                  <circle cx="50" cy="23" r="7" fill="rgba(255,255,255,0.4)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Ruched Style</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">چین دار شیک</p>
+              <p class="text-lg font-luxury text-white">۲۴,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-6"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 14 L44 29 L29 33 L34 46 L29 59 L44 63 L50 78 L56 63 L71 59 L66 46 L71 33 L56 29 Z"/>
+                  <circle cx="50" cy="46" r="14" fill="rgba(255,255,255,0.2)"/>
+                  <circle cx="45" cy="40" r="2" fill="rgba(255,215,0,1)"/>
+                  <circle cx="55" cy="40" r="2" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">One Shoulder</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">تک شانه مدرن</p>
+              <p class="text-lg font-luxury text-white">۲۶,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-1"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="35" rx="20" ry="30"/>
+                  <path d="M30 35 L22 86 L42 86 L42 70 L58 70 L58 86 L78 86 L70 35 Z"/>
+                  <circle cx="50" cy="21" r="8" fill="rgba(255,255,255,0.5)"/>
+                  <circle cx="43" cy="48" r="2" fill="rgba(255,215,0,1)"/>
+                  <circle cx="57" cy="48" r="2" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Strapless</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">بدون بند کلاسیک</p>
+              <p class="text-lg font-luxury text-white">۲۵,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-2"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <path d="M50 16 L43 31 L28 35 L33 48 L28 61 L43 65 L50 80 L57 65 L72 61 L67 48 L72 35 L57 31 Z"/>
+                  <path d="M40 48 Q50 42 60 48 L58 72 L42 72 Z" fill="rgba(255,255,255,0.28)"/>
+                  <circle cx="50" cy="24" r="6" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Embroidered</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">گلدوزی شده</p>
+              <p class="text-lg font-luxury text-white">۲۹,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-3"
+               style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(186, 85, 211, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <ellipse cx="50" cy="33" rx="22" ry="31"/>
+                  <path d="M28 33 L18 85 L38 85 L38 69 L62 69 L62 85 L82 85 L72 33 Z"/>
+                  <circle cx="50" cy="19" r="9" fill="rgba(255,255,255,0.48)"/>
+                  <circle cx="41" cy="47" r="3" fill="rgba(255,215,0,1)"/>
+                  <circle cx="59" cy="47" r="3" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Lace Evening</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">توری مجلسی</p>
+              <p class="text-lg font-luxury text-white">۲۷,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- FORMAL PAGE -->
+    <div id="formal-page" class="hidden-section">
+      <div class="relative z-20 py-8 px-6">
+        <button onclick="showHome()" class="luxury-button px-8 py-3 text-sm font-luxury tracking-widest"
+                style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #1a0033;">
+          ← بازگشت به صفحه اصلی
+        </button>
+      </div>
+
+      <section class="relative z-10 px-6 py-12 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-luxury text-white mb-4">Formal <span class="gold-shimmer">Collection</span></h2>
+          <p class="text-2xl font-persian text-purple-200">مجموعه لباس رسمی</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <!-- 10 Formal wear products -->
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-1"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="28" y="22" width="44" height="66" rx="4"/>
+                  <path d="M28 22 L23 42 L23 88 L35 88 L35 58 L65 58 L65 88 L77 88 L77 42 L72 22 Z"/>
+                  <circle cx="44" cy="42" r="3" fill="rgba(255,215,0,1)"/>
+                  <circle cx="56" cy="42" r="3" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Business Suit</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">کت و دامن اداری</p>
+              <p class="text-lg font-luxury text-white">۱۸,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-2"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="30" y="24" width="40" height="62" rx="3"/>
+                  <path d="M30 24 L26 40 L26 86 L36 86 L36 60 L64 60 L64 86 L74 86 L74 40 L70 24 Z"/>
+                  <rect x="42" y="36" width="16" height="3" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Executive Set</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">ست مدیریتی</p>
+              <p class="text-lg font-luxury text-white">۲۲,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-3"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="32" y="26" width="36" height="60" rx="4"/>
+                  <path d="M32 26 L28 42 L28 86 L40 86 L40 62 L60 62 L60 86 L72 86 L72 42 L68 26 Z"/>
+                  <circle cx="45" cy="40" r="2" fill="rgba(255,215,0,1)"/>
+                  <circle cx="55" cy="40" r="2" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Pencil Skirt Set</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">دامن مدادی</p>
+              <p class="text-lg font-luxury text-white">۱۶,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-4"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="29" y="23" width="42" height="64" rx="4"/>
+                  <path d="M29 23 L24 41 L24 87 L37 87 L37 59 L63 59 L63 87 L76 87 L76 41 L71 23 Z"/>
+                  <rect x="40" y="34" width="20" height="24" fill="rgba(255,255,255,0.25)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Blazer Dress</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">پیراهن بلیزر</p>
+              <p class="text-lg font-luxury text-white">۱۹,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-5"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="31" y="25" width="38" height="61" rx="3"/>
+                  <path d="M31 25 L27 43 L27 86 L38 86 L38 61 L62 61 L62 86 L73 86 L73 43 L69 25 Z"/>
+                  <circle cx="46" cy="41" r="3" fill="rgba(255,215,0,1)"/>
+                  <circle cx="54" cy="41" r="3" fill="rgba(255,215,0,1)"/>
+                  <rect x="44" y="48" width="12" height="2" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Tailored Suit</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">دوخت سفارشی</p>
+              <p class="text-lg font-luxury text-white">۲۴,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-6"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="33" y="27" width="34" height="59" rx="4"/>
+                  <path d="M33 27 L29 44 L29 86 L41 86 L41 63 L59 63 L59 86 L71 86 L71 44 L67 27 Z"/>
+                  <rect x="41" y="36" width="18" height="26" fill="rgba(255,255,255,0.22)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Classic Ensemble</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">ست کلاسیک</p>
+              <p class="text-lg font-luxury text-white">۲۰,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-1"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="30" y="26" width="40" height="60" rx="3"/>
+                  <path d="M30 26 L25 43 L25 86 L37 86 L37 62 L63 62 L63 86 L75 86 L75 43 L70 26 Z"/>
+                  <line x1="37" y1="62" x2="63" y2="62" stroke="rgba(0,0,0,0.25)" stroke-width="2"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Professional Set</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">ست حرفه‌ای</p>
+              <p class="text-lg font-luxury text-white">۱��,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-2"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="32" y="24" width="36" height="62" rx="4"/>
+                  <path d="M32 24 L28 41 L28 86 L39 86 L39 60 L61 60 L61 86 L72 86 L72 41 L68 24 Z"/>
+                  <circle cx="45" cy="39" r="2" fill="rgba(255,215,0,1)"/>
+                  <circle cx="55" cy="39" r="2" fill="rgba(255,215,0,1)"/>
+                  <rect x="47" y="46" width="6" height="2" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Modern Suit</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">کت مدرن</p>
+              <p class="text-lg font-luxury text-white">۲۱,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-3"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="29" y="25" width="42" height="61" rx="4"/>
+                  <path d="M29 25 L24 42 L24 86 L36 86 L36 61 L64 61 L64 86 L76 86 L76 42 L71 25 Z"/>
+                  <rect x="39" y="35" width="22" height="25" fill="rgba(255,255,255,0.24)"/>
+                  <line x1="36" y1="61" x2="64" y2="61" stroke="rgba(0,0,0,0.3)" stroke-width="2"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Office Chic</h3> 
+              <p class="text-sm font-persian text-purple-200 mb-3">شیک اداری</p>
+              <p class="text-lg font-luxury text-white">۱۹,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+          <div class="product-card rounded-2xl p-6 animate-slide-in delay-4"
+               style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%); border: 2px solid rgba(255, 215, 0, 0.25);">
+            <div class="text-center">
+              <div class="w-full h-48 rounded-xl mb-4 flex items-center justify-center"
+                   style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);">
+                <svg class="w-24 h-24 text-yellow-300" viewBox="0 0 100 100" fill="currentColor">
+                  <rect x="31" y="23" width="38" height="63" rx="3"/>
+                  <path d="M31 23 L26 40 L26 86 L38 86 L38 59 L62 59 L62 86 L74 86 L74 40 L69 23 Z"/>
+                  <circle cx="44" cy="38" r="3" fill="rgba(255,215,0,1)"/>
+                  <circle cx="56" cy="38" r="3" fill="rgba(255,215,0,1)"/>
+                  <rect x="45" y="45" width="10" height="3" fill="rgba(255,215,0,1)"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-luxury text-yellow-300 mb-2">Power Suit</h3>
+              <p class="text-sm font-persian text-purple-200 mb-3">کت قدرت</p>
+              <p class="text-lg font-luxury text-white">۲۳,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  <script>
+    function showHome() {
+      document.getElementById('home-page').classList.remove('hidden-section');
+      document.getElementById('home-page').classList.add('visible-section');
+      document.getElementById('bridal-page').classList.remove('visible-section');
+      document.getElementById('bridal-page').classList.add('hidden-section');
+      document.getElementById('evening-page').classList.remove('visible-section');
+      document.getElementById('evening-page').classList.add('hidden-section');
+      document.getElementById('formal-page').classList.remove('visible-section');
+      document.getElementById('formal-page').classList.add('hidden-section');
+      window.scrollTo(0, 0);
+    }
+
+    function showCategory(category) {
+      document.getElementById('home-page').classList.remove('visible-section');
+      document.getElementById('home-page').classList.add('hidden-section');
+
+      if (category === 'bridal') {
+        document.getElementById('bridal-page').classList.remove('hidden-section');
+        document.getElementById('bridal-page').classList.add('visible-section');
+      } else if (category === 'evening') {
+        document.getElementById('evening-page').classList.remove('hidden-section');
+        document.getElementById('evening-page').classList.add('visible-section');
+      } else if (category === 'formal') {
+        document.getElementById('formal-page').classList.remove('hidden-section');
+        document.getElementById('formal-page').classList.add('visible-section');
+      }
+
+      window.scrollTo(0, 0);
+    }
+
+    const defaultConfig = {
+      brand_name: 'TRX',
+      hero_title: 'Luxury Fashion House',
+      hero_subtitle: 'جایی که رویاهای شما به واقعیت تبدیل می‌شود',
+      contact_phone: '098-9120767783',
+      contact_address: 'خیابان فرشته، پلاک ۱۲۰',
+      contact_city: 'گلستان گنبد کاووس',
+      background_color: '#1a0033',
+      text_color: '#ffffff',
+      accent_color: '#ffd700',
+      card_color: 'rgba(139, 0, 255, 0.2)'
+    };
+
+    let config = { ...defaultConfig };
+
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+
+      const brandElements = document.querySelectorAll('#brand-name, #footer-brand');
+      brandElements.forEach(el => {
+        if (el) el.textContent = config.brand_name || defaultConfig.brand_name;
+      });
+
+      const heroTitle = document.getElementById('hero-title');
+      if (heroTitle) {
+        const title = config.hero_title || defaultConfig.hero_title;
+        const words = title.split(' ');
+        const lastWord = words.pop();
+        heroTitle.innerHTML = words.join(' ') + ' <span class="gold-shimmer">' + lastWord + '</span>';
+      }
+
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+
+      const contactPhone = document.getElementById('contact-phone');
+      if (contactPhone) contactPhone.textContent = config.contact_phone || defaultConfig.contact_phone;
+
+      const contactAddress = document.getElementById('contact-address');
+      if (contactAddress) contactAddress.textContent = config.contact_address || defaultConfig.contact_address;
+
+      const contactCity = document.getElementById('contact-city');
+      if (contactCity) contactCity.textContent = config.contact_city || defaultConfig.contact_city;
+
+      const wrapper = document.getElementById('app-wrapper');
+      if (wrapper) {
+        wrapper.style.backgroundColor = config.background_color || defaultConfig.background_color;
+      }
+    }
+
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (value) => {
+              cfg.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              cfg.accent_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.card_color || defaultConfig.card_color,
+            set: (value) => {
+              cfg.card_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ card_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['brand_name', cfg.brand_name || defaultConfig.brand_name],
+        ['hero_title', cfg.hero_title || defaultConfig.hero_title],
+        ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
+        ['contact_phone', cfg.contact_phone || defaultConfig.contact_phone],
+        ['contact_address', cfg.contact_address || defaultConfig.contact_address],
+        ['contact_city', cfg.contact_city || defaultConfig.contact_city]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+</body>
+</html>
+
